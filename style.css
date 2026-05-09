@@ -1,0 +1,1130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-: #E50914;
+    --secundary-: #B3B3B3;
+    --primary-red: #E50914;
+    --text-white: #FFFFFF;
+    --text-gray: #e5e5e5dd;
+}
+
+/*
+border-radius 5px botoes
+font monsterard ou inter
+
+
+
+/* Título Principal (BANNER) */
+h1 {
+    /* Mínimo 32px, Ideal 6vw, Máximo 64px */
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.0;
+    color: var(--text-white);
+}
+
+/* Títulos de Seções (NOVIDADES, PROMOÇÕES) */
+h2 {
+    /* Mínimo 24px, Ideal 4vw, Máximo 32px */
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-white);
+    border-left: 4px solid var(--primary-red);
+    /* Detalhe lateral da imagem */
+    padding-left: 15px;
+}
+
+/* Títulos de Cards (Nomes de filmes/planos) */
+h3 {
+    /* Mínimo 18px, Ideal 2.5vw, Máximo 22px */
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+/* Textos de corpo e descrições */
+p {
+    /* Mínimo 14px, Padrão 16px */
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-gray);
+}
+
+body {
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 0;
+}
+
+span {
+    color: var(--primary-);
+}
+
+/*----------------------------------------------------topo--------------------*/
+header {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 30px;
+    padding-top: 40px;
+    position: fixed;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+nav {
+
+    padding: 15px 30px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    /* 👈 aqui é o correto */
+    list-style: none;
+    /* remove bolinhas */
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    /* não precisa gap aqui */
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    padding-bottom: 3px;
+    font-weight: 600;
+
+}
+
+ul li a:hover {
+
+    border-bottom: 2px solid var(--primary-red);
+}
+
+.botoes {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+    padding: 5px 24px;
+    background-color: transparent;
+    border-radius: 8px;
+    border: solid 2px #25d36553;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.btn-2 {
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    background-color: var(--primary-red);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/*---------------------------------hero-------------------------------------*/
+.hero {
+    width: 100%;
+    height: 700px;
+    background-image: url(asserts/img/ssessao-hero.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+
+    justify-content: center;
+    position: relative;
+
+
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        /* ESCURECIMENTO GERAL (camada base) */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+
+        /* TOPO */
+        linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 20%),
+
+        /* BAIXO */
+        linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 20%),
+
+        /* ESQUERDA */
+        linear-gradient(to right, rgb(0, 0, 0) 0%, transparent 25%),
+
+        /* DIREITA */
+        linear-gradient(to left, rgba(0, 0, 0, 1) 0%, transparent 25%);
+}
+
+.conteudo {
+    width: 60%;
+    height: auto;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    left: 70px;
+    bottom: 80px;
+
+    padding: 20px;
+
+}
+
+.hero .p-h {
+    color: var(--primary-);
+    padding-bottom: 20px;
+
+}
+
+.hero h1 {
+    padding-bottom: 20px;
+}
+
+.btn {
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-hero-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 12px 24px;
+    color: white;
+    border: none;
+    background-color: var(--primary-red);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.btn-hero-2 {
+
+    padding: 12px 24px;
+    background-color: transparent;
+    border-radius: 8px;
+    border: solid 1px rgba(122, 122, 122, 0.985);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.infor {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+
+
+
+    gap: 80px;
+    margin-top: 50px;
+}
+
+.suporte {
+
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+
+
+}
+
+.suporte img {
+    margin-right: 10px;
+
+}
+
+.suporte p {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/*---------------------------------novidades-----------------------------*/
+
+.novidades {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 70px;
+
+}
+
+.titulo {
+    width: 88%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+}
+
+.titulo h3 {
+    border-left: solid 3px var(--primary-);
+    padding: 4px;
+}
+
+.btn-seta {
+
+    color: var(--primary-);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+
+
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.capa {
+    width: 88%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+.capa {
+    width: 88%;
+
+    display: flex;
+    gap: 15px;
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    scroll-behavior: auto;
+}
+
+.capa::-webkit-scrollbar {
+    display: none;
+}
+
+.sub_capa {
+    min-width: 200px;
+    height: 250px;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+.sub_capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sub_capa {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: solid 2px rgba(134, 134, 134, 0.396);
+    overflow: hidden;
+}
+
+.sub_capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+/*-----------------------------promocoes--------------------------------------*/
+.promocoes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+
+
+}
+
+.card-promo {
+    width: 88%;
+    height: 700px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+    margin-top: 60px;
+    background-image: url(asserts/img/netflix-library.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+
+
+
+
+}
+
+.card-promo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.6);
+    /* intensidade do escuro */
+
+}
+
+/* destaque do plano anual */
+.card-plano.destaque {
+    border: 2px solid #ff0000;
+    position: relative;
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.423);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* badge promoção */
+.card-plano .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: #fff;
+    padding: 5px 5px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+/* bloco da promoção */
+.promo-info {
+    background: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    padding: 10px;
+    margin: 0;
+    border-radius: 8px;
+}
+
+.promo-info p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.promo-info small {
+    font-size: 11px;
+    color: #aaa;
+}
+
+/* botão do destaque */
+.card-plano.destaque button {
+    background: red;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-plano.destaque button:hover {
+    background: darkred;
+}
+
+.card-plano {
+    width: 260px;
+    padding: 35px 25px;
+
+    background: linear-gradient(180deg,
+            #0b0b0b,
+            #111111);
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.196);
+
+    box-shadow:
+        0 0 20px rgba(5, 5, 5, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.02);
+
+    text-align: center;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.423);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.visivel{
+    opacity: 0;
+    transform: translateY(90px);
+}
+
+.card-plano h4 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+
+.dias {
+    color: #9f9f9f;
+    font-size: 1rem;
+    font-weight: 600;
+
+    display: block;
+    margin-bottom: 25px;
+}
+
+.preco {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+}
+
+.rs {
+    color: #E50914;
+    font-size: 2.0rem;
+    font-weight: 700;
+
+    margin-right: 6px;
+    margin-top: 1px;
+}
+
+.preco h4 {
+    color: white;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    text-align: left;
+}
+
+.beneficios p {
+    color: #d8d8d8;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-plano button {
+    width: 100%;
+    padding: 15px;
+
+    background: transparent;
+    border: 2px solid #E50914;
+    border-radius: 12px;
+
+    color: #E50914;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-plano button:hover {
+    background: #E50914;
+    color: white;
+}
+
+.card-plano-super {
+    border: 1px solid var(--primary-);
+    box-shadow: 0 0 10px 5px #E50914;
+}
+
+.card-plano-super button {
+    width: 100%;
+    padding: 15px;
+
+    background: var(--primary-);
+    border: none;
+    border-radius: 12px;
+
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+
+
+/*--------------------------------------*/
+/* FOOTER GERAL */
+.footer {
+    background: #0f0f0f;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30PX;
+
+    gap: 30px;
+}
+
+.cont {
+    width: 88%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    margin-top: 30px;
+}
+
+/* BOXES (COLUNAS) */
+.box {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+
+
+}
+
+/* TITULO DAS COLUNAS */
+.box h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* LINHA EMBAIXO DO TÍTULO */
+
+/* LINKS */
+.box ul {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box ul li {}
+
+.footer .box ul li a {
+    color: #bbb;
+
+    transition: 0.3s;
+}
+
+.footer .box ul li a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+/* ICONES (REDES SOCIAIS) */
+.footer .social {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer .social a {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1c1c1c;
+    border-radius: 50%;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.footer .social a:hover {
+    background: red;
+}
+
+/* PARTE FINAL DO FOOTER */
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    font-size: 14px;
+    color: #777;
+}
+
+.copy {
+    background: #0f0f0f;
+    width: 100%;
+    height: auto;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.sorteio {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ margin-top: 60px;
+}
+
+
+
+
+.sorteio-wrapper {
+    background-color: var(--fundo-card);
+    border: 1px solid #333;
+    border-radius: 15px;
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+
+/* LADO ESQUERDO */
+.sorteio-info {
+    flex: 1;
+    text-align: center;
+}
+
+.titulo-sessao {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.number {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--vermelho-principal);
+    display: block;
+}
+
+.label {
+    font-size: 10px;
+    color: var(--texto-cinza);
+    font-weight: 600;
+}
+
+.separator {
+    color: var(--vermelho-principal);
+    font-size: 24px;
+    font-weight: 900;
+    padding-bottom: 15px;
+}
+
+.subtitulo-premio {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.card-premio {
+height: 200PX;
+    background: #000;
+    border: 1px solid #222;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+    flex-direction: column;
+    background-image: url(asserts/img/tvs.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.img-ps5 {
+    width: 80px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+.txt-premio h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #ff0000;
+ 
+}
+
+.txt-premio p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: var(--texto-cinza);
+    font-weight: 700;
+}
+
+/* LADO DIREITO - FORMULÁRIO */
+.sorteio-form {
+    flex: 1;
+}
+
+.sorteio-form h2 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sorteio-form p {
+    color: var(--texto-cinza);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    background-color: var(--fundo-input);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border: 1px solid #222;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    outline: none;
+}
+
+.btn-participar {
+    width: 100%;
+    background-color: var(--vermelho-principal);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+   
+    transition: 0.3s;
+     background-color: #ff0a16;
+}
+
+.btn-participar:hover {
+    transform: scale(1.02);
+   
+}
+
+.priva {
+    font-size: 11px;
+    text-align: center;
+    margin-top: 15px ;
+    color: rgb(247, 247, 247);
+}
+
+/* RESPONSIVO */
+/* ========================= */
+/* ======== TABLET ========= */
+/* ========================= */
+
+@media (max-width: 1024px) {
+
+    header {
+        justify-content: space-between;
+        padding: 20px 30px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .conteudo {
+        width: 90%;
+        left: 20px;
+        bottom: 40px;
+    }
+
+    .hero {
+        height: 800px;
+    }
+
+    .infor {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .capa {
+        flex-wrap: wrap;
+    }
+
+    .sub_capa {
+        width: 180px;
+        height: 230px;
+    }
+
+    .card-promo {
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .card-plano,
+    .card-plano-super {
+        width: 320px;
+    }
+
+    .cont {
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .box {
+        width: 45%;
+        align-items: start;
+    }
+
+    .sorteio-wrapper {
+        flex-direction: column;
+        padding: 25px;
+        width: 90%;
+    }
+
+    .card-premio {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+
+  header{
+    display: none;
+  }
+
+    .botoes {
+        gap: 10px;
+    }
+
+    .btn-1 {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .btn-2 {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    /* HERO */
+    .conteudo {
+        width: 100%;
+        left: 0;
+        bottom: 20px;
+        padding: 15px;
+    }
+
+    .hero {
+        height: 600px;
+    }
+
+    /* INFOS HERO */
+    .infor {
+    display: grid;
+      grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-content: center;
+
+    }
+    .suporte{
+       
+    }
+
+    /* NOVIDADES CAROUSEL */
+    .capa {
+        width: 95%;
+        gap: 10px;
+    }
+
+    .sub_capa {
+        width: 80px;
+        height: 260px;
+    }
+
+    /* PLANOS */
+    .card-promo {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .card-plano,
+    .card-plano-super {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* SORTEIO */
+    .sorteio-wrapper {
+        flex-direction: column;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .card-premio {
+        height: 200px;
+    }
+
+    /* FOOTER */
+    .cont {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .box {
+        width: 100%;
+        align-items: flex-start;
+    }
+}
+@media (max-width: 1024px) {
+
+    header {
+        justify-content: space-between;
+        padding: 20px 30px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .conteudo {
+        width: 90%;
+        left: 20px;
+        bottom: 40px;
+    }
+
+    .hero {
+        height: 750px;
+    }
+
+    .infor {
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+    }
+
+    .capa {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .card-promo {
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .card-plano,
+    .card-plano-super {
+        width: 300px;
+    }
+
+    .cont {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .box {
+        width: 45%;
+    }
+
+    .sorteio-wrapper {
+        flex-direction: column;
+    }
+}
