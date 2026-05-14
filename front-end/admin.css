@@ -1,0 +1,115 @@
+BODY{
+    background-color: black;
+        font-family: 'Montserrat', sans-serif;
+}
+
+.admin-container {
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #0b0b0b;
+
+    font-family: 'Montserrat', sans-serif;
+
+    padding: 40px;
+    color: white;
+}
+
+/* topo */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.admin-header h1 {
+    font-size: 1.8rem;
+    border-left: 4px solid #E50914;
+    padding-left: 12px;
+}
+
+/* card da tabela */
+.admin-card {
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    backdrop-filter: blur(10px);
+}
+
+/* tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+/* cabeçalho */
+thead {
+background-color: #E50914;
+}
+
+th {
+    text-align: left;
+    padding: 14px;
+
+    font-size: 0.9rem;
+    color: #ffffff;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* linhas */
+td {
+    padding: 14px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+/* hover linha */
+tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* quando for PAGO */
+.status.pago {
+  background-color: #28a745;
+  color: white;
+}
+
+/* quando for PENDENTE */
+.status.pendente {
+  background-color: #dc3545;
+  color: white;
+}
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}

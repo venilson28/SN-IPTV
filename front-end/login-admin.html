@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="login-admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="hero">
+    <div class="hero-sub">
+      <h1>ÁREA ADM</h1>
+
+      <input type="password" id="senha" placeholder="Senha admin">
+      <button onclick="logar()" class="btn-participar">Entrar</button>
+      <p id="erro"></p>
+    </div>
+  </div>
+
+  <script>
+    function logar() {
+      const senha = document.getElementById("senha").value;
+
+      if (senha === "27011528aA@") {
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById("erro").innerText = "Senha incorreta";
+      }
+    }
+    async function login() {
+      const senha = document.getElementById("senha").value;
+
+      const res = await fetch("http://localhost:3000/login-admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ senha })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        window.location.href = "admin.html";
+      } else {
+        alert("Senha incorreta");
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<input id="email" placeholder="Digite seu email">
+<button onclick="consultar()">Consultar</button>
+
+<div id="resultado"></div>
+
+<input id="email" placeholder="Digite seu email">
+<button onclick="consultar()">Consultar</button>
+
+<div id="resultado"></div>
+
+<script>
+async function consultar() {
+  const email = document.getElementById("email").value;
+
+  const res = await fetch("http://localhost:3000/cliente?email=" + email);
+  const data = await res.json();
+
+  const resultado = document.getElementById("resultado");
+
+  // 👇 AQUI ENTRA O SEU CÓDIGO
+  if (data.status === "pago") {
+    resultado.innerHTML =
+      "🎉 Pago ✔ Número da sorte: " + data.numero_sorte;
+  } else {
+    resultado.innerHTML =
+      "⏳ Aguardando pagamento";
+  }
+}
+</script>

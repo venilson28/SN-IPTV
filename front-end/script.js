@@ -103,38 +103,76 @@ if (btn && modal && fechar) {
 
 
 /* ================= FORM ================= */
-const form = document.querySelector("form");
+const form = document.getElementById("formulario");
 
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const nome = form.querySelector("[name='nome']").value;
-    const whatsapp = form.querySelector("[name='whatsapp']").value;
-    const email = form.querySelector("[name='email']").value;
+  const nome = form.nome.value;
+  const whatsapp = form.whatsapp.value;
+  const email = form.email.value;
 
-    const res = await fetch("http://localhost:3000/cadastro", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome, whatsapp, email })
-    });
-
-    const data = await res.json();
-
-    const resultado = document.getElementById("resultado-sorte");
-
-    if (resultado) {
-      resultado.innerHTML = data.error
-        ? data.error
-        : "🎉 Seu número da sorte: " + data.numero_sorte;
-
-      resultado.classList.add("ativo");
-    }
-
-    carregarClientes();
+  const res = await fetch("http://localhost:3000/cadastro", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nome, whatsapp, email })
   });
-}
 
+  const data = await res.json();
+
+  document.getElementById("resultado-sorte").innerHTML =
+    data.numero_sorte
+      ? "🎉 Seu número da sorte: " + data.numero_sorte
+      : data.error;
+});
+/*======================= emvia pro whatsap=============================*/
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = form.nome.value;
+  const whatsapp = form.whatsapp.value;
+  const email = form.email.value;
+
+  const res = await fetch("http://localhost:3000/cadastro", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ nome, whatsapp, email })
+  });
+
+  const data = await res.json();
+
+  const resultado = document.getElementById("resultado-sorte");
+
+  if (data.success) {
+
+    // mensagem no site
+    resultado.innerHTML =
+      "Cadastro realizado ✔ Aguarde confirmação.";
+
+    // 🔥 SUA MENSAGEM PARA O WHATSAPP
+    const msg = `Olá! Novo cadastro no site:
+
+Nome: ${nome}
+WhatsApp: ${whatsapp}
+Email: ${email}
+Número da sorte: ${data.numero_sorte}
+
+Status: Aguardando confirmação`;
+
+    // 🔥 ABRIR SEU WHATSAPP
+    const seuNumero = "5541988879701"; // EX: 5511999999999
+
+    setTimeout(() => {
+      window.open(
+        `https://wa.me/${seuNumero}?text=${encodeURIComponent(msg)}`,
+        "_blank"
+      );
+    }, 800);
+
+  } else {
+    resultado.innerHTML = data.error;
+  }
+});
 
 /* ================= CONTADOR MYSQL ================= */
 const totalClientes = document.getElementById("total-clientes");
@@ -161,6 +199,55 @@ async function carregarClientes() {
 
 carregarClientes();
 
+/*============================CONFIRMACAO E GERACAO DO NUMERO DA SORT============================*/
+async function consultarNumero() {
 
+  const email =
+    document.getElementById("emailConsulta").value;
+
+  const res = await fetch(
+    `http://localhost:3000/cliente?email=${email}`
+  );
+
+  const data = await res.json();
+
+  const resultado =
+    document.getElementById("resultadoConsulta");
+
+  // cliente não encontrado
+  if (data.error) {
+
+    resultado.innerHTML =
+      "❌ Cliente não encontrado";
+
+    return;
+  }
+
+  // cliente ainda não pago
+  if (data.status !== "pago") {
+
+    resultado.innerHTML =
+      "⏳ Pagamento ainda não confirmado";
+
+    return;
+  }
+
+  // cliente pago
+  resultado.innerHTML = `
+    <div class="box-numero">
+
+      <p>🎉 Pagamento Confirmado</p>
+
+      <p>
+        Seu número da sorte:
+      </p>
+
+      <span class="numero-sorte">
+        ${data.numero_sorte}
+      </span>
+
+    </div>
+  `;
+}
 /* ================= RESET SCROLL ================= */
 window.onload = () => window.scrollTo(0, 0);

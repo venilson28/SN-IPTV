@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<h1>Clientes</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody id="tabela"></tbody>
+</table>
+
+<script>
+async function carregar() {
+  const res = await fetch("http://localhost:3000/admin/clientes");
+  const data = await res.json();
+
+  const tabela = document.getElementById("tabela");
+
+  tabela.innerHTML = data.map(c => `
+    <tr>
+      <td>${c.nome}</td>
+      <td>${c.email}</td>
+      <td>${c.status}</td>
+      <td>
+        <button onclick="marcarPago(${c.id})">
+          Marcar Pago
+        </button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+async function marcarPago(id) {
+  const res = await fetch(`http://localhost:3000/pagar/${id}`, {
+    method: "PUT"
+  });
+
+  const data = await res.json();
+
+ /*
+  if (data.success) {
+    alert("Pagamento confirmado ✔ Número: " + data.numero_sorte);
+    carregar();
+  } else {
+    alert("Erro ao atualizar");
+  }*/
+}
+
+carregar();
+</script>
+</body>
+</html>
