@@ -1,4 +1,30 @@
 
+/* ================= POP-UP PROMOÇÃO COPA ================= */
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal-promo");
+    const btnFechar = document.getElementById("fechar-modal");
+
+    if (modal && btnFechar) {
+        // Abre o pop-up automaticamente 1 segundo após o site carregar
+        setTimeout(() => {
+            modal.classList.add("mostrar");
+        }, 1000);
+
+        // Fecha o pop-up ao clicar no botão (X)
+        btnFechar.addEventListener("click", function () {
+            modal.classList.remove("mostrar");
+        });
+
+        // Fecha o pop-up se o cliente clicar no fundo escuro fora da imagem
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("mostrar");
+            }
+        });
+    }
+});
+
+
 /* ================= CAROUSEL ================= */
 const carousel = document.getElementById("carousel");
 
@@ -19,7 +45,29 @@ if (carousel) {
 
   animate();
 }
+/* ================= CAROUSEL 2 (SÉRIES) ================= */
+// Certifique-se de que o ID no seu HTML seja exatamente "carousel-2"
+const carousel2 = document.getElementById("carousel-2");
 
+if (carousel2) {
+  let position2 = 0; // Usando uma variável de posição exclusiva para o 2
+  let speed2 = 0.7;
+
+  function animates() {
+    position2 += speed2;
+
+    // CORRIGIDO: Agora verifica corretamente o tamanho do carrossel 2
+    if (position2 >= carousel2.scrollWidth - carousel2.clientWidth) {
+      position2 = 0;
+    }
+
+    // CORRIGIDO: Agora move a barra de rolagem do carrossel 2
+    carousel2.scrollLeft = position2;
+    requestAnimationFrame(animates);
+  }
+
+  animates();
+}
 
 /* ================= HEADER ================= */
 const header = document.querySelector("header");
